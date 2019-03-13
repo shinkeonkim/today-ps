@@ -39,11 +39,7 @@ int main()
         }   
     } //D[y][x]를 일단 최댓값으로 저장
 
-    Q.Y=0;
-    Q.X=0;
-    Q.D=1;
-    Q.C=ar[0][0];
-    D[0][0][ar[0][0]]=1; //시작지점 초기화
+    Q.Y=0; Q.X=0; Q.D=1; Q.C=ar[0][0]; D[0][0][ar[0][0]]=1; //시작지점 초기화
 
     que.push(Q);
     while(!que.empty())
@@ -51,16 +47,16 @@ int main()
         st Z;
         Z=que.front();
         que.pop();
-        for(int d=0; d<4; d++)
+        for(int d=0; d<4; d++) // 4방향 탐색
         {
             int next_X=Z.X+dx[d];
-            int next_Y=Z.Y+dy[d];
-
-            if(0<=next_X && next_X<M && 0<=next_Y && next_Y<N)
+            int next_Y=Z.Y+dy[d]; //다음 (X,Y) 좌표
+               
+            if(0<=next_X && next_X<M && 0<=next_Y && next_Y<N) // 다음(X,Y) 좌표가 맵의 유효한 좌표인지 판단
             {
-                if(ar[next_Y][next_X]==1 && Z.C==0)
+                if(ar[next_Y][next_X]==1 && Z.C==0) //Z.C는 지금까지 벽을 부순 횟수라고 해석할 수 있음. (다음 좌표에 벽이 있고 지금까지 벽을 부수지 않은 경우)
                 {
-                    if(D[next_Y][next_X][1]>Z.D+1)
+                    if(D[next_Y][next_X][1]>Z.D+1) //다음 좌표에 저장된 거리가 지금까지의 경로 거리+1보다 큰경우 갱신+큐에 삽입
                     {       
                         D[next_Y][next_X][1]=Z.D+1;
                         Q.X=next_X;
@@ -70,9 +66,9 @@ int main()
                         que.push(Q);
                     }
                 }
-                else if(ar[next_Y][next_X]==0)
+                else if(ar[next_Y][next_X]==0) //(다음 좌표에 벽이 없는 경우)
                 {
-                    if(D[next_Y][next_X][Z.C]>Z.D+1)
+                    if(D[next_Y][next_X][Z.C]>Z.D+1) //다음 좌표에 저장된 거리가 지금까지의 경로 거리+1보다 큰경우 갱신+큐에 삽입
                     {       
                         D[next_Y][next_X][Z.C]=Z.D+1;
                         Q.X=next_X;
@@ -85,7 +81,7 @@ int main()
             }
         }
     }
-    ans = min(D[N-1][M-1][0],D[N-1][M-1][1]);
-    if(ans==Mx) cout<<-1;
-    else cout<<ans;
+    ans = min(D[N-1][M-1][0],D[N-1][M-1][1]); //벽을 한번 부순 경우와 안 부순 경우 중 최소 거리 판단
+    if(ans==Mx) cout<<-1; // 두 경우가 모두 Mx(INF)인 경우 도달하지 못한것
+    else cout<<ans; //answer 출력
 }
