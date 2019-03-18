@@ -28,7 +28,7 @@ int main()
         cout<<C(N+M-2,N-1);
         return 0;
     }
-    // 아래는 X,Y의 좌표를 구하고 nCr 함수에 넣기 위해 가공
+    // 아래는 X,Y의 좌표를 구하고 nCr 함수에 넣기 위해 가공하는 과정
     X=K%M;
     Y=K/M;
     if(K%M==0) 
