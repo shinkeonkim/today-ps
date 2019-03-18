@@ -8,7 +8,7 @@ using namespace std;
 int N,check[15],C;
 int main()
 {
-    cin>>N;
+    cin>>N; //input
     while(N>0)
     {
         check[N%10]++;
