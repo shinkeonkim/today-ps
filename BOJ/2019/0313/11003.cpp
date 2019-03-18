@@ -10,7 +10,7 @@
 using namespace std;
 struct st{
     int A,C; //A는 배열의 몇번째 값인지 저장, C는 배열값 저장 
-};ka
+};
 
 struct compare{
     bool operator()(st a, st b) // priority_queue => bool operator 생성
