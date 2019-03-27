@@ -1,6 +1,6 @@
 # Today_PS
 
-## BOJ 문제 목록
+## BOJ 문제 풀이 목록
 
     1000~
     - 1793(2019/03/22)
@@ -47,5 +47,3 @@
 ## Codeup
 
 ## Koistudy
-
-## Google Code Jam
