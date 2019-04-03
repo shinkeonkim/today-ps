@@ -58,6 +58,7 @@
     - 14954(2019/03/19) 2017 ACM-ICPC_Regionals_Asia_Korea_Daejeon D번
     15000~
     - 15239(2019/04/02) 2017 AIPO National Finals 2번
+    - 15240(2019/04/02) 2017 AIPO National Finals 3번
     - 15803(2019/03/27) 2018 SCCC Programming Contest A번 (숭실대학교)
     - 15922(2019/03/25) 선린인터넷고등학교 제2회 천하제일 코딩대회 G번
     - 15969(2019/03/18)
