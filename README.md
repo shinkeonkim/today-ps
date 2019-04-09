@@ -67,6 +67,7 @@
     - 14889(2019/04/03)
     - 14954(2019/03/19) 2017 ACM-ICPC_Regionals_Asia_Korea_Daejeon D번
     15000~
+    - 15059(2019/04/09) Latin America Regional Contests 2017 H번
     - 15233(2019/04/04) 2017 AIPO Preliminary Round 2번
     - 15239(2019/04/03) 2017 AIPO National Finals 2번
     - 15240(2019/04/03) 2017 AIPO National Finals 3번
