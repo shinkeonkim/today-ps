@@ -3,6 +3,7 @@
 ## BOJ 문제 풀이 목록
 
     1000~
+    - 1406(2019/04/09) 2004 Croatian Highschool Competitions in Informatics National Competition #1 - Juniors 2번
     - 1793(2019/03/22)
     2000~
     - 2206(2019/03/12)
