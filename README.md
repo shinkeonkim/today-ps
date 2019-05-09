@@ -46,7 +46,8 @@
     - 10157(2019/04/08)
     - 10158(2019/04/10)
     - 10164(2019/03/18)
-    - 10205(2019/05/01)  The USC Programming Contest Spring 2014 A번
+    - 10205(2019/05/01) The USC Programming Contest Spring 2014 A번
+    - 10331(2019/05/09) Asia Regional Contest 2014 in Tokyo B번
     - 10569(2019/04/03)
     - 10768(2019/03/22)
     - 10773(2019/03/27)
