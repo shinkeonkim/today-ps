@@ -41,6 +41,7 @@
     - 7510(2019/03/19)
     9000~
     - 9086(2019/05/07) Seoul Nationalwide Internet Competition 2003 PB번
+    - 9366(2019/05/12) 
     - 9507(2019/03/19)
     - 9713(2019/04/09) Al-Khawarizmi National Programming Contest 2011 A번
     10000~
