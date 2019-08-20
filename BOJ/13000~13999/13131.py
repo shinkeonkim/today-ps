@@ -1,0 +1,1 @@
+n=int(input());print((38+30*n+2*n*n)*n)
