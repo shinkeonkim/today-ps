@@ -1,0 +1,1 @@
+print(sorted([input()for _ in range(int(input()))],key=lambda t:float(t))[1])
