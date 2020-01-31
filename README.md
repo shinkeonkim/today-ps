@@ -4,7 +4,6 @@
     <img src = "https://img.shields.io/github/issues/shinkeonkim/Today_PS">
     <img src = "https://img.shields.io/github/forks/shinkeonkim/Today_PS">
     <img src = "https://img.shields.io/github/stars/shinkeonkim/Today_PS">
-    <img src = "https://img.shields.io/github/license/shinkeonkim/Today_PS">
     <img src="https://img.shields.io/static/v1?label=onlinejudge&message=solution" />
     <img src="https://img.shields.io/github/languages/top/shinkeonkim/Today_PS" />
     <img src="https://img.shields.io/github/last-commit/shinkeonkim/Today_PS"/>
