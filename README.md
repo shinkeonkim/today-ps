@@ -14,7 +14,11 @@
 
 ## Online Judge Problem Solution
 
-주로 boj문제의 풀이 코드를 올리고 있고 추후 codeforces, 프로그래머스, codeup의 문제 풀이를 올릴 예정입니다. :smiley: :smiley:
+boj, Atcoder, programmers, codeup의 문제 풀이를 모아놓고 있습니다. :smiley:
+(추후.. koistudy, codeforces 문제 풀이도 시작해보겠습니다..)
+
+코드 리뷰, 개선 언제나 받아들입니다 :thumbsup:
+
 > 코드 ctrl + c, ctrl + v를 해서 제출하는 것을 막지는 않으나, 여러분의 공부에는 도움이 되지 않습니다. :wink:
 
 ## Profile
@@ -40,3 +44,7 @@
 - <a href = "https://codeforces.com/">codeforces</a>
     - id: llIllIll
     - <a href = "https://codeforces.com/profile/llIllIll">프로필 링크</a>
+
+- <a href = "https://atcoder.jp/?lang=en">Atcoder</a>
+    - id: singun11
+    - <a href = "https://atcoder.jp/users/singun11">프로필 링크</a>
