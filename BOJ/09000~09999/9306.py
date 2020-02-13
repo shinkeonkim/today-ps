@@ -1,0 +1,1 @@
+for i in range(int(input())):print("Case {0}: {2}, {1}".format(i+1,input(),input()))
