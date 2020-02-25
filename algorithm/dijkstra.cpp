@@ -2,6 +2,7 @@
 #include <queue>
 #include <vector>
 #define Mx 9999999
+#define NODE 22000
 using namespace std;
 
 struct st{
@@ -13,9 +14,9 @@ bool operator<(st A,st B) {
         return A.Cost > B.Cost;
 }
 
-int N,M,start,check[22000],Min[22000];
+int N,M,start,check[NODE],Min[NODE];
 priority_queue<st,vector<st>> Q;
-vector< vector<st> > E(22000);
+vector< vector<st> > E(NODE);
 st ct;
 
 int main()
