@@ -3,11 +3,10 @@
 #include <queue>
 #include <vector>
 #define MAX_V 100000
-#define INF (ll)1e18
 
 using namespace std;
 using ll = long long;
-
+const ll INF = (ll)1e18;
 
 struct st {
 	int node;
@@ -20,24 +19,20 @@ struct st {
 ll dist[MAX_V + 1];
 vector<st> adj[MAX_V + 1];
 
-ll dijkstra(int n,int start)
-{
+ll dijkstra(int n,int start) {
 	fill(dist, dist + n + 1, INF);
 	priority_queue<st> pq;
 	pq.push({ start, 0 });
 	dist[start] = 0;
-	while (!pq.empty())
-	{
+	while (!pq.empty()) {
 		st cur = pq.top();
 		pq.pop();
 
 		if (cur.cost > dist[cur.node])
 			continue;
 
-		for (st &nxt : adj[cur.node])
-		{
-			if (dist[cur.node] + nxt.cost < dist[nxt.node])
-			{
+		for (st &nxt : adj[cur.node]) {
+			if (dist[cur.node] + nxt.cost < dist[nxt.node]) {
 				dist[nxt.node] = dist[cur.node] + nxt.cost;
 				pq.push({ nxt.node, dist[nxt.node] });
 			}
@@ -49,13 +44,18 @@ ll dijkstra(int n,int start)
 
 int main()
 {
-	int v, e, a, b, w;
+	int v, e, possible[110000];
+	int a, b, w;
 	scanf("%d%d", &v, &e);
-	for (int i = 0; i < e; i++)
-	{
+	for(int x=1; x<=v; x++) scanf("%d",&possible[x]);
+    possible[v]=0;
+	for (int i = 0; i < e; i++) {
 		scanf("%d%d%d", &a, &b, &w);
-		adj[a].push_back({b, w});
-		adj[b].push_back({a, w});
+        a++;b++;
+        if(!possible[a] && !possible[b]) {
+		    adj[a].push_back({b, w});
+	    	adj[b].push_back({a, w});    
+        }
 	}
 
 	printf("%lld\n", dijkstra(v,1));
