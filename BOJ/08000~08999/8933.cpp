@@ -53,8 +53,6 @@ int main() {
 		else {
 			num_cnt[K]=1;
 		}
-		//for(int x=0;x<4; x++) cout<<cnt[x]<<" ";
-		//cout<<"\n";
 		for(int x=0; x<=s.length()-N; x++) {
 			sub(cnt,s[x]);
 			add(cnt,s[x+N]);
@@ -65,8 +63,6 @@ int main() {
 			else {
 				num_cnt[K]=1;
 			}
-			//for(int z = 0; z<4; z++) cout<<cnt[z]<<" ";
-			//cout<<K<<"\n";
 		}
 		
 		for(auto it = num_cnt.begin(); it!=num_cnt.end(); it++) {
