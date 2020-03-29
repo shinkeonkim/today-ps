@@ -1,7 +1,29 @@
-for t in range(int(input())):
-    L = list(map(int,input().split()))
-    n,L = L[0],L[1:]
-    print("Case {}: {}".format(t+1,n-1),end = " ")
-    for i in range(len(L)-1):
-        print((n-i)*L[i],end=" ")
-    print()
+while True:
+    a = input()
+
+    if a == '#':
+        break
+
+    L = []
+    while a != '#':
+        L.append(a)
+        a = input()
+    
+    chk = True
+    for i in range(1,len(L)):
+        if len(L[i-1]) != len(L[i]):
+            chk = False
+            break
+        
+        cnt = 0
+        for j in range(len(L[i-1])):
+            if L[i][j] != L[i-1][j]:
+                cnt+=1
+        if cnt!= 1:
+            chk = False
+            break
+    
+    if chk:
+        print("Correct")
+    else:
+        print("Incorrect")
