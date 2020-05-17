@@ -25,7 +25,7 @@ void init() { // m = row, n = col
     for(int x=0; x<m; x++) cin >> ar[x];
     for(int y=0; y<m; y++) {
         for(int x=0; x<n; x++) {
-            check[y][x] = true; // 이 지점을 방문할 수 있는가? -> 이 지점을 이전에 방문한 적 있는가?를 반대로,
+            check[y][x] = true; // 이 지점을 방문할 수 있는가? -> 이 지점을 이전에 방문한 적 있는가?를 판단하는 척도
         }
     }
 }
