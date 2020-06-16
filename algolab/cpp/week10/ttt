@@ -1,0 +1,1 @@
+g++ TestPolynomial.cpp MyPolynomial.cpp MyTerm.cpp -o main.exe
