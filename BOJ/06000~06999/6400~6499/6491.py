@@ -12,7 +12,7 @@ while True:
         break
 
 for i in L:
-    if i == 0:
+    if i == 0:  
         break
     s = f(i)
     if s == i:
