@@ -1,15 +1,12 @@
 #include <bits/stdc++.h>
 
-#define MX 123456
+#define MX 2200000
 
 using namespace std;
 
-string content;
-string obj;
-
 int fail[MX];
 vector <int> kmp (string s, string o) {
-    fill(fail,fail+MX,0);
+    fill(fail, fail+MX, 0);
     vector<int> result;
     int N = s.length();
     int M = o.length();
@@ -35,14 +32,26 @@ vector <int> kmp (string s, string o) {
     return result;
 }
 
+int gcd(int a, int b) {
+    return b >0?gcd(b, a%b):a;
+}
+
+int N;
+string a;
+string b;
 
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    cin >> content >> obj;
-    vector <int> ret = kmp(content, obj);
-    for(auto i : ret) {
-        cout << i << " ";
-    }
+    
+    cin >> N;
+    getline(cin, a);
+    getline(cin, a);
+    getline(cin, b);
+    a = a + " " + a.substr(0, a.length() - 1);
+    int ret = kmp(a, b).size();
+    int z = gcd(ret, N);
+    cout << ret/z <<"/" <<N/z;
+    
 }
