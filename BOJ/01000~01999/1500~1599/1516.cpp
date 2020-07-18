@@ -1,57 +1,50 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#define ll long long
-
+#include <queue>
 using namespace std;
-
-int N;
-int T[550];
-int cnt[550];
-bool check[550];
-vector< vector<ll> > V(550);
-vector<vector<int>> time(550);
-
+const int INF = 123456789;
+int N,K,W;
+int T[1100];
+int D[1100];
+int check[1100];
 int main() {
-    cin >> N;
-    for(int x= 1 ; x<=N; x++) {
-        cin >> T[x];
-        int a;
-        while(true) {
-            cin >> a;
-            if (a == -1) break;
-            cnt[x]++;
-            V[a].push_back(x);
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cin >> tc;
+    while(tc--) {
+        cin >> N >> K;
+        vector < vector <int>> V(N+1);
+        queue <int> Q;
+        for(int x=1; x<=N; x++) {
+            cin >> T[x];
+            D[x] = T[x];
+            check[x] = 0;
         }
-    }
-
-    for(int x=1; x<=N; x++) {
-        int select = 0;
-        for(int y=1; y<=N; y++) {
-            if(!check[y] && cnt[y] == 0) {
-                select = y;
+        int a,b;
+        for(int x=0; x<K; x++) {
+            cin >> a >> b;
+            V[a].push_back(b);
+            check[b]++;
+        }
+        cin >> W;
+        int start = 0;
+        for(int x=1; x<=N; x++) {
+            if(check[x] == 0) {
+                Q.push(x);
             }
         }
 
-        check[select] = true;
-        time[select].push_back(select);
-
-        for(int v = 0; v<V[select].size(); v++) {
-            int next = V[select][v];
-            time[next].push_back(select);
-            cnt[next]--;
-        }
-
-    }
-    for(int x= 1; x<=N; x++) {
-        sort(time[x].begin(),time[x].end());
-        int ret = T[time[x][0]];
-        for(int v = 1; v<time[x].size(); v++) {
-            if(time[x][v]!= time[x][v-1]) {
-                ret += T[time[x][v]];
+        while(!Q.empty()) {
+            int f= Q.front();
+            Q.pop();
+            for(auto next : V[f]) {
+                D[next] = max(D[next],D[f] + T[next]);
+                check[next]--;
+                if(check[next] == 0) {
+                    Q.push(next);
+                }
             }
         }
-        cout <<ret <<endl;
-
+        cout << D[W] << "\n";
     }
 }
