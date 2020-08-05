@@ -1,15 +1,12 @@
-// http://www.secmem.org/blog/2019/01/09/wrong-dijkstra/
-#include <cstdio>
-#include <queue>
-#include <vector>
-#define MAX_V 100000
+#include <bits/stdc++.h>
+
+#define MAX 100000
 #define INF (ll)1e18
 
 using namespace std;
-using ll = long long;
+typedef long long ll;
 
-
-struct st {
+struct edge {
 	int node;
 	ll cost;
 	bool operator<(const st &to) const {
@@ -18,45 +15,39 @@ struct st {
 };
 
 ll dist[MAX_V + 1];
-vector<st> adj[MAX_V + 1];
+vector<edge> adj[MAX_V + 1];
 
-ll dijkstra(int n,int start)
-{
+ll dijkstra(int n,int start) {
 	fill(dist, dist + n + 1, INF);
-	priority_queue<st> pq;
+	priority_queue<edge> pq;
 	pq.push({ start, 0 });
 	dist[start] = 0;
-	while (!pq.empty())
-	{
-		st cur = pq.top();
+	while (!pq.empty()) {
+		edge cur = pq.top();
 		pq.pop();
 
-		if (cur.cost > dist[cur.node])
-			continue;
+		if (cur.cost > dist[cur.node]) continue;
 
 		for (st &nxt : adj[cur.node])
-		{
-			if (dist[cur.node] + nxt.cost < dist[nxt.node])
-			{
+			if (dist[cur.node] + nxt.cost < dist[nxt.node]) {
 				dist[nxt.node] = dist[cur.node] + nxt.cost;
 				pq.push({ nxt.node, dist[nxt.node] });
 			}
-		}
 	}
-
 	return dist[n] >= INF ? -1 : dist[n];
 }
 
-int main()
-{
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+	
 	int v, e, a, b, w;
-	scanf("%d%d", &v, &e);
-	for (int i = 0; i < e; i++)
-	{
-		scanf("%d%d%d", &a, &b, &w);
+	cin >> v >> e;
+	for (int i = 0; i < e; i++) {
+		cin >> a >> b >> w;
 		adj[a].push_back({b, w});
 		adj[b].push_back({a, w});
 	}
-
-	printf("%lld\n", dijkstra(v,1));
+	cout << dijkstra(v, 1);
 }

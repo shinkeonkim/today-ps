@@ -14,10 +14,6 @@ ll N, maxWeight,ans;
 ll D[2][11000];
 ll weight[110], cost[110];
 
-ll max(ll a, ll b) {
-    return a>b?a:b;
-}
-
 void input() {
     cin >> N >> maxWeight;
     for(int x=1; x<=N; x++) {
