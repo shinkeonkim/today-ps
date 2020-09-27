@@ -1,53 +1,103 @@
 #include <bits/stdc++.h>
 
-#define MAX 100000
-#define INF (ll)1e18
+#define for1(s,n) for(int i = s; i < n; i++)
+#define for1j(s,n) for(int j = s; j < n; j++)
+#define foreach(k) for(auto i : k)
+#define foreachj(k) for(auto j : k)
+#define pb(a) push_back(a)
+#define sz(a) a.size()
 
 using namespace std;
+typedef unsigned long long ull;
 typedef long long ll;
+typedef vector <int> iv1;
+typedef vector <vector<int>> iv2;
+typedef vector <ll> llv1;
+typedef unsigned int uint;
+typedef vector <ull> ullv1;
+typedef vector <vector <ull>> ullv2;
+
+#define INF (ll)1e18
 
 struct edge {
-	int node;
+	ll node;
 	ll cost;
-	bool operator<(const st &to) const {
+	bool operator<(const edge &to) const {
 		return cost > to.cost;
 	}
 };
 
-ll dist[MAX_V + 1];
-vector<edge> adj[MAX_V + 1];
-
-ll dijkstra(int n,int start) {
-	fill(dist, dist + n + 1, INF);
-	priority_queue<edge> pq;
-	pq.push({ start, 0 });
-	dist[start] = 0;
-	while (!pq.empty()) {
-		edge cur = pq.top();
-		pq.pop();
-
-		if (cur.cost > dist[cur.node]) continue;
-
-		for (st &nxt : adj[cur.node])
-			if (dist[cur.node] + nxt.cost < dist[nxt.node]) {
-				dist[nxt.node] = dist[cur.node] + nxt.cost;
-				pq.push({ nxt.node, dist[nxt.node] });
-			}
+struct WGraph {	
+	ll n; 
+	vector<vector<edge>> adj;
+	vector<ll> prev;
+	WGraph(ll n) : n{n}, adj(n+1) {}
+	void addEdge(ll s, ll e, ll cost) {
+		adj[s].push_back({e, cost});
 	}
-	return dist[n] >= INF ? -1 : dist[n];
-}
+
+	void input(ll m) { // 단방향
+		ll a, b, c;
+		while(m--) {
+			cin >> a >> b >> c;
+			addEdge(a,b,c);
+		}
+	}
+
+	void inputD(ll m) { // 양방향
+		ll a, b, c;
+		while(m--){
+			cin >> a >> b >> c;
+			addEdge(a,b,c);
+			addEdge(b,a,c);
+		}
+	}
+
+	vector <ll> dijkstra(ll s) {
+		vector <ll> dist(n+1, INF);
+		prev.resize(n+1, -1);
+		priority_queue<edge> pq;
+		pq.push({ s, 0ll });
+		dist[s] = 0;
+		while (!pq.empty()) {
+			edge cur = pq.top();
+			pq.pop();
+			if (cur.cost > dist[cur.node]) continue;
+			for (auto &nxt : adj[cur.node])
+				if (dist[cur.node] + nxt.cost < dist[nxt.node]) {
+					prev[nxt.node] = cur.node;
+					dist[nxt.node] = dist[cur.node] + nxt.cost;
+					pq.push({ nxt.node, dist[nxt.node] });
+				}
+		}
+		return dist;
+	}
+
+	vector<ll> getPath(ll s, ll e) {
+		vector<ll> ret;
+		ll current = e;
+		while(current != -1) {
+			ret.push_back(current);
+			current = prev[current];
+		}
+		reverse(ret.begin(), ret.end());
+		return ret;
+	}
+};
 
 int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	cout.tie(0);
-	
-	int v, e, a, b, w;
+	ll v, e, start;
 	cin >> v >> e;
-	for (int i = 0; i < e; i++) {
-		cin >> a >> b >> w;
-		adj[a].push_back({b, w});
-		adj[b].push_back({a, w});
+	cin >> start;
+	WGraph w(v);
+	w.input(e);
+
+	vector<ll> ret = w.dijkstra(start);
+	for1(1, v+1) {
+		if(ret[i] == INF) cout <<"INF\n";
+		else cout << ret[i] <<"\n";
 	}
-	cout << dijkstra(v, 1);
 }
