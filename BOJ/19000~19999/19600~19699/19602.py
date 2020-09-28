@@ -1,0 +1,1 @@
+print("happy" if sum([i*int(input()) for i in range(1,4)]) > 9 else "sad")
