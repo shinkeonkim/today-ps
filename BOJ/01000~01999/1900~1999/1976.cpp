@@ -1,9 +1,10 @@
 #include <iostream>
-#define Mx 123456789
+#define Mx (ll)123456789
 using namespace std;
-int N,M;
-int D[220][220];
-int ar[1100];
+typedef long long ll;
+ll N,M;
+ll D[220][220];
+ll ar[1100];
 int main()
 {
     cin>>N>>M;
@@ -12,6 +13,7 @@ int main()
         for(int x=0; x<N; x++)
         {
             cin>>D[y][x];
+            if(y==x) D[y][x] = 1;
             if(D[y][x] == 0)
             {
                 D[y][x] = Mx;
@@ -28,7 +30,7 @@ int main()
             {
                 if(D[x][y] > D[x][z] + D[z][y])
                 {
-                    D[x][y] = D[x][z] +D[z][y];
+                    D[x][y] = D[x][z] + D[z][y];
                 }
             }
         }
@@ -36,7 +38,7 @@ int main()
 
     for(int x=0; x<M-1; x++)
     {
-        if(D[ar[x]][ar[x+1]] >= Mx)
+        if(D[ar[x]-1][ar[x+1]-1] >= Mx)
         {
             cout<<"NO";
             return 0;
