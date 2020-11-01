@@ -1,8 +1,11 @@
 t,p = map(int,input().split())
-if p > 20:
-    pp = (100-p)/t
-    ans = (p-20) * pp + 40 *pp
+
+use = 100 - p
+if use > 80:
+    over = use - 80
+    org = 80
+    port = t/(over * 2 + org)
+    print(2*p*port)
 else:
-    pp = (120-2*p)/t
-    ans = 2*p/pp
-print(ans)
+    port = t/use
+    print((20 + p) * port)
