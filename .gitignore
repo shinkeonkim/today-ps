@@ -3,3 +3,5 @@
 *nonsolve.*
 *.class
 *tempCodeRunnerFile.*
+
+.cph/
