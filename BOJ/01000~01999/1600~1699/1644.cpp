@@ -18,7 +18,7 @@ typedef vector <ull> ullv1;
 typedef vector <vector <ull>> ullv2;
 
 ll N,ans;
-int ar[4400000];
+int ar[4800000];
 llv1 V; 
 
 int main() {
@@ -28,10 +28,10 @@ int main() {
     
     cin >> N;
     V.pb(2);
-    for(int x=3; x<=4000000; x+=2) {
+    for(int x=3; x<=4400000; x+=2) {
         if(!ar[x]) {
             V.pb(x);
-            for(int y=x+x; y<=4000000; y+=x) {
+            for(int y=x+x; y<=4400000; y+=x) {
                 ar[y] = 1;
             }
         }
