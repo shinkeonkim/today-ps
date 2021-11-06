@@ -6,50 +6,62 @@
 #define foreachj(k) for(auto j : k)
 #define pb(a) push_back(a)
 #define sz(a) a.size()
-#define INF (ll)1e18
+#define MM (ll)10000000
+
 using namespace std;
 typedef unsigned long long ull;
 typedef long long ll;
 typedef vector <int> iv1;
-typedef vector <vector<int>> iv2;
+typedef vector <vector<int> > iv2;
 typedef vector <ll> llv1;
 typedef unsigned int uint;
 typedef vector <ull> ullv1;
-typedef vector <vector <ull>> ullv2;
+typedef vector <vector <ull> > ullv2;
+typedef pair<ll, ll> pll;
 
-ll x, n, a;
+ll width, n, a;
+llv1 V;
+vector<pll> ans;
+
+bool compare(pll a, pll b) {
+  return abs(a.second - a.first) > abs(b.second - b.first);
+}
 
 int main() {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    
-    while(cin >> x) {
-        cin >> n;
-        llv1 V;
-        llv1 ans = {-INF, INF, -INF};
-        for1(0, n) {
-            cin >> a;
-            V.pb(a);
-        }
-        sort(V.begin(), V.end());
-        ll S = x * 10000000ll;
-        for1(0, n) {
-            ll obj = S - V[i];
-            if(obj < 0) continue;
-            ll idx = lower_bound(V.begin()+i+1, V.end(), obj) - V.begin();
-            if(V[idx] == obj && idx > i) {
-                if(ans[0] < abs(V[idx] - V[i])) {
-                    ans[0] = V[idx]-V[i];
-                    ans[1] = V[i];
-                    ans[2] = V[idx];
-                    cout << "yes " << ans[1] << " " << ans[2] << "\n";
-                    break;
-                }
-            }
-        }
-        if(ans[0] == -INF) {
-            cout << "danger\n";
-        }
+  ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+  while(1) {
+    V.clear();
+    ans.clear();
+
+    cin >> width >> n;
+
+    if (cin.eof()) break;
+
+    width *= MM;
+
+    for1(0, n) {
+      cin >> a;
+      V.pb(a);
     }
+
+    sort(V.begin(), V.end());
+
+    for1(0, n) {
+      int idx = lower_bound(V.begin()+i+1, V.end(), width - V[i]) - V.begin();
+
+      if (idx < n && i != idx && width == V[i] + V[idx])
+      {
+        ans.push_back({V[i], V[idx]});
+      }
+    }
+    
+    sort(ans.begin(), ans.end());
+
+    if(ans.size() == 0) {
+      cout << "danger\n";
+    } else {
+      cout << "yes " << ans[0].first << " " << ans[0].second << "\n";
+    }
+
+  }
 }
