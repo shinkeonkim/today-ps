@@ -1,0 +1,1 @@
+for i in input():print(sum([*map(int,list(str(ord(i))))])*i)
